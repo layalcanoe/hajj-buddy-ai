@@ -7,7 +7,7 @@ Built with **Retrieval-Augmented Generation (RAG)** + **Gemini AI**, it provides
 
 This system blends **LLM power**, **vector search**, and a clean, interactive web interface to deliver answers that are accurate, safe, and grounded in real Islamic sources.
 
-🌐 **Live Demo:** [Try Hajj Buddy AI](https://hajj-buddy-ai-cet1.onrender.com/)
+**Live Demo:** [Try Hajj Buddy AI](https://hajj-buddy-ai-cet1.onrender.com/)
 
 ---
 
