@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="homePage.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Hajj Buddy AI - Your Sacred Journey Companion</title>
+
+</head>
+<body>
+    <nav>
+        <div class="logo">Hajj Buddy AI</div>
+        <ul class="nav-links">
+            <li><a href="#chat">Chat Now</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hajj & Umrah Assistance</h1>
+            <p>Experience the wisdom of an AI-powered guidance for your Hajj & Umrah pilgrimage. Get instant answers and step-by-step rituals all in one place.</p>
+            <a href="#chat" class="cta-button">Start Your Journey 🌙</a>
+        </div>
+    </section>
+
+    <section class="chat-section" id="chat">
+        <div class="chat-container">
+            <div class="chat-interface">
+                <div class="chat-header">
+                    <h3>Chat with Hajj Buddy</h3>
+                    <p style="font-size: 14px; opacity: 0.9;">Ask about rituals, preparation, or anything!</p>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        <div class="avatar">IB</div>
+                        <div class="message-bubble">
+                            As-salamu alaykum! I'm your Islamic Buddy AI. How can I help you prepare for your sacred journey today?
+                        </div>
+                    </div>
+                </div>
+                <ul class="chat-suggestions">
+                    <li><button class="suggestion-pill" onclick="useSuggestion('Can you give me detailed Tawaf steps?')">Tawaf steps</button></li>
+                    <li><button class="suggestion-pill" onclick="useSuggestion('How many rounds in Saai?')">Sa'i Rounds</button></li>
+                    <li><button class="suggestion-pill" onclick="useSuggestion('When do I enter Ihram for Umrah?')">Ihram timing</button></li>
+                    <li><button class="suggestion-pill" onclick="useSuggestion('Tell me the first day of Hajj steps.')">First steps of Hajj</button></li>
+                </ul>
+                <div class="chat-input-area">
+                    <input type="text" class="chat-input" id="messageInput" placeholder="Ask about Tawaf, packing, duas..." onkeypress="handleKeyPress(event)">
+                    <button class="send-btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="about">
+        <h3 style="margin-bottom: 15px; font-family: 'Playfair Display', serif; font-size: 28px;">Hajj Buddy AI</h3>
+        <p>Empowering pilgrims with AI-powered guidance for their sacred journey.</p>
+        <p style="margin-top: 30px; font-size: 14px;">© 2024 Hajj Buddy AI.</p>
+    </footer>
+
+<script>
+        const chatMessages = document.getElementById("chatMessages");
+        const messageInput = document.getElementById("messageInput");
+
+        // Add message to chat UI
+        function addMessage(text, isUser) {
+            const msg = document.createElement("div");
+            msg.className = `message ${isUser ? "user" : "bot"}`;
+
+            const bubble = document.createElement("div");
+            bubble.className = "message-bubble";
+            bubble.textContent = text;
+
+            if (!isUser) {
+                const avatar = document.createElement("div");
+                avatar.className = "avatar";
+                avatar.textContent = "AI";
+                msg.appendChild(avatar);
+            }
+
+            msg.appendChild(bubble);
+            chatMessages.appendChild(msg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Call your backend (server.js)
+        async function askBackend(message) {
+            try {
+                const response = await fetch("http://localhost:3000/api/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message })
+                });
+
+                const data = await response.json();
+                return data.reply;
+            } catch (err) {
+                console.error(err);
+                return "⚠️ Unable to reach the server.";
+            }
+        }
+
+        // Send message
+       // async function sendMessage() {
+           // const text = messageInput.value.trim();
+           // if (!text) return;
+
+           // addMessage(text, true);
+            //messageInput.value = "";
+
+            // Loading bubble
+            //addMessage("Thinking...", false);
+            //const loading = chatMessages.lastChild;
+
+            //const reply = await askBackend(text);
+
+           // loading.remove();
+          //  addMessage(reply, false);
+        //}
+
+        async function sendMessage() {
+    const message = messageInput.value.trim();
+    if (!message) return;
+
+    addMessage(message, true);
+    messageInput.value = "";
+
+    addMessage("Thinking...", false);
+    const loadingBubble = chatMessages.lastChild;
+
+    try {
+        const response = await fetch("http://localhost:3000/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+
+        loadingBubble.remove();
+        addMessage(data.reply, false);
+    } catch (error) {
+        loadingBubble.remove();
+        addMessage("Error connecting to server.", false);
+    }
+}
+
+        // Enter key functionality
+        function handleKeyPress(e) {
+            if (e.key === "Enter") sendMessage();
+        }
+
+        // Suggestion buttons
+        function useSuggestion(text) {
+            messageInput.value = text;
+            sendMessage();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute("href")).scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
+        });
+    </script>
+</body>
+</html>
