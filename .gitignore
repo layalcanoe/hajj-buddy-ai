@@ -1,0 +1,23 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment Variables
+.env
+
+# RAG / Vector Files
+vectorstore.json
+faiss_index.bin
+faiss_metadata.json
+
+# System files
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# Build files (if any)
+dist/
+build/
