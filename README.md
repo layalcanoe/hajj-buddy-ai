@@ -7,7 +7,7 @@ Built with **Retrieval-Augmented Generation (RAG)** + **Gemini AI**, it provides
 
 This system blends **LLM power**, **vector search**, and a clean, interactive web interface to deliver answers that are accurate, safe, and grounded in real Islamic sources.
 
-🌐 **Live Demo:** [Try Hajj Buddy AI on Render](https://your-render-app-link.onrender.com)
+🌐 **Live Demo:** [Try Hajj Buddy AI](https://hajj-buddy-ai-cet1.onrender.com/)
 
 ---
 
@@ -170,7 +170,7 @@ Just double-click **homePage.html**.
 
 Hajj Buddy AI is deployed using [Render](https://render.com), which hosts both the **backend** and **frontend** seamlessly.
 
-**Live app:** [https://your-render-app-link.onrender.com](https://your-render-app-link.onrender.com)
+**Live app:** [https://hajj-buddy-ai-cet1.onrender.com](https://hajj-buddy-ai-cet1.onrender.com/)
 
 Steps we followed to deploy:
 
