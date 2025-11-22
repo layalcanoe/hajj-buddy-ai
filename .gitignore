@@ -6,8 +6,8 @@ yarn-error.log
 # Environment Variables
 .env
 
-# RAG / Vector Files
-vectorstore.json
+# RAG / Vector Files (REMOVED vectorstore.json - we need it for deployment!)
+# vectorstore.json
 faiss_index.bin
 faiss_metadata.json
 
