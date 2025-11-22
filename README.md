@@ -210,6 +210,36 @@ Hajj Buddy AI aims to empower pilgrims with:
 ---
 
 ## Credits
+# Layal Canoe — Frontend & AI Integration
 
+focused on building and connecting the entire user-facing experience. Her contributions include:
+
+Designing and implementing the full frontend interface using HTML, CSS, and JavaScript
+
+Creating the chat UI and ensuring smooth user interactions
+
+Connecting the frontend to the backend API and handling requests/responses
+
+Integrating the Retrieval-Augmented Generation (RAG) pipeline with the AI model
+
+Debugging, testing, and ensuring a stable end-to-end AI workflow
+
+Structuring the overall interaction flow between the user, RAG system, and AI model
+
+# Jouri Al Daghima — Knowledge Base, Embeddings & Deployment
+
+Jouri focused on building the backend knowledge intelligence and deploying the project. Her contributions include:
+
+Gathering, structuring, and validating authenticated Islamic resources for the knowledge base
+
+Preparing and processing documents into clean text chunks suitable for retrieval
+
+Generating embeddings and constructing the vectorstore used for RAG
+
+Integrating the embeddings with the backend retrieval system
+
+Deploying the full project and managing environment variables and hosting configurations
+
+Ensuring the system could operate reliably in a production environment
 
 
