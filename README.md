@@ -7,6 +7,8 @@ Built with **Retrieval-Augmented Generation (RAG)** + **Gemini AI**, it provides
 
 This system blends **LLM power**, **vector search**, and a clean, interactive web interface to deliver answers that are accurate, safe, and grounded in real Islamic sources.
 
+🌐 **Live Demo:** [Try Hajj Buddy AI on Render](https://your-render-app-link.onrender.com)
+
 ---
 
 ##  Features
@@ -161,6 +163,24 @@ http://localhost:3000
 Just double-click **homePage.html**.
 
 ---
+
+---
+
+##  Deployment
+
+Hajj Buddy AI is deployed using [Render](https://render.com), which hosts both the **backend** and **frontend** seamlessly.
+
+**Live app:** [https://your-render-app-link.onrender.com](https://your-render-app-link.onrender.com)
+
+Steps we followed to deploy:
+
+1. Push the repo to GitHub.
+2. Create a new Node.js web service on Render.
+3. Connect the GitHub repo.
+4. Set the `GEMINI_API_KEY` environment variable in Render.
+5. Render automatically installed dependencies and started the server.
+6. App is now live at the above link!
+
 
 ##  Safety & Islamic Authenticity
 
